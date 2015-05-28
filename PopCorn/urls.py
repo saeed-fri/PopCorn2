@@ -7,7 +7,7 @@ urlpatterns = [
     # url(r'^blog/', include('blog.urls')),
 
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^movie/', 'Movie.views.movie'),
+    url(r'^movie/[0-9]*/', 'Movie.views.movie'),
     url(r'^search/', 'PopCorn.views.search'),
     url(r'^post/','Post.views.post'),
     url(r'^timeline/', 'Post.views.timeline'),
