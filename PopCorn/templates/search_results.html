@@ -28,46 +28,20 @@
 
             <div class="tab-content">
                 <section role="tabpanel" class="col-md-9 tab-pane active" id="movies">
-                    <div class="search_movie_result col-md-4">
-                        <img src="../static/img/posters/12_angry_men.jpg" class="col-md-6 search_movie_poster"/>
+                    {% for movie in movie_results %}
+                        <div class="search_movie_result col-md-4">
+                        {% with movie.id|stringformat:"s" as id %}
+                            <img src="{% static 'img/posters/'|add:id|add:'.jpg' %}" class="col-md-6 search_movie_poster"/>
+                        {% endwith %}
                         <div class="col-md-6 search_movie_info">
-                            <h4>12 Angry Men</h4>
+                            <h4>{{ movie.name }}</h4>
                             <div class="rating">
                                 <span class="star star_full"></span><span class="star star_full"></span><span class="star star_full"></span><span class="star star_full"></span><span class="star star_half"></span><div class="rating_number full_rate">4.5/5</div>
                             </div>
-                            <div class="search_movie_director"><strong>Director: </strong> Sidney Lumet</div>
+                            <div class="search_movie_director"><strong>Director: </strong> {{ movie.director }}</div>
                         </div>
                     </div>
-                    <div class="search_movie_result col-md-4">
-                        <img src="../static/img/posters/shawshank.jpg" class="col-md-6 search_movie_poster"/>
-                        <div class="col-md-6 search_movie_info">
-                            <h4>Shawshank Redemption</h4>
-                            <div class="rating">
-                                <span class="star star_full"></span><span class="star star_full"></span><span class="star star_full"></span><span class="star star_full"></span><span class="star star_full"></span><div class="rating_number full_rate">5/5</div>
-                            </div>
-                            <div class="search_movie_director"><strong>Director: </strong> Frank Darabont</div>
-                        </div>
-                    </div>
-                    <div class="search_movie_result col-md-4">
-                        <img src="../static/img/test/poster1.jpg" class="col-md-6 search_movie_poster"/>
-                        <div class="col-md-6 search_movie_info">
-                            <h4>Catch Me If You Can</h4>
-                            <div class="rating">
-                                <span class="star star_full"></span><span class="star star_full"></span><span class="star star_full"></span><span class="star star_full"></span><span class="star star_empty"></span><div class="rating_number full_rate">4/5</div>
-                            </div>
-                            <div class="search_movie_director"><strong>Director: </strong> Steven Spielberg</div>
-                        </div>
-                    </div>
-                    <div class="search_movie_result col-md-4">
-                        <img src="../static/img/posters/shawshank.jpg" class="col-md-6 search_movie_poster"/>
-                        <div class="col-md-6 search_movie_info">
-                            <h4>Shawshank Redemption</h4>
-                            <div class="rating">
-                                <span class="star star_full"></span><span class="star star_full"></span><span class="star star_full"></span><span class="star star_full"></span><span class="star star_full"></span><div class="rating_number full_rate">5/5</div>
-                            </div>
-                            <div class="search_movie_director"><strong>Director: </strong> Frank Darabont</div>
-                        </div>
-                    </div>
+                    {% endfor %}
                 </section>
 
 

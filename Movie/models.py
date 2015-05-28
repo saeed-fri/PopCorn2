@@ -7,6 +7,7 @@ class Movie(models.Model):
     rating_sum = models.BigIntegerField(default=0)
     rating_count = models.BigIntegerField(default=0)
     imdb = models.CharField(max_length=50)
+    director = models.CharField(max_length=60)
 
     def __str__(self):
         return str(self.id) + ' ' + self.name

@@ -8,7 +8,7 @@ urlpatterns = [
 
     url(r'^admin/', include(admin.site.urls)),
     url(r'^movie/(?P<movie_id>\d+)/', 'Movie.views.movie'),
-    url(r'^search/', 'PopCorn.views.search'),
+    url(r'^search/(?P<query>\w*)', 'PopCorn.views.search'),
     url(r'^post/','Post.views.post'),
     url(r'^timeline/', 'Post.views.timeline'),
     url(r'^register/', 'User.views.register'),
