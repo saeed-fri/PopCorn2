@@ -1,0 +1,178 @@
+.thumbnail_pic_and_text {
+    margin-top: 40px;
+}
+.thumbnail_pic{
+    margin-bottom: 5px;
+	width: 50px;
+	height: 50px;
+}
+
+.thumbnail_text{
+    position: relative;
+    right: 5px;
+}
+
+a{
+    color:#3b5998;
+}
+
+.username{
+    font-weight: bold;
+    text-align: right;
+    display: block;
+    cursor: default;
+}
+
+.user_comment{
+    display: inline !important;
+    margin-left: 3px;
+    margin-right: 5px;
+}
+
+.date{
+    color: gray;
+    text-align: right;
+    display: block;
+    cursor: default;
+}
+
+a:link {
+    text-decoration: none;
+}
+
+a:visited {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: none;
+    cursor: pointer;
+}
+
+a:active {
+    text-decoration: none;
+}
+
+.timeline_box {
+    /*margin-top:40px;*/
+    margin-bottom: 50px;
+    height: auto;
+    width: auto;
+    /*overflow:  auto;/*visible | hidden | scroll | auto | inherit*/
+}
+
+.blue_clicks{
+    color: #6d84b4;
+    cursor: default;
+}
+
+.comment{
+    background-color: #f6f7f8;
+    margin-bottom:40px;
+    padding-right: 10px;
+    padding-left: 10px;
+}
+
+.bottom_circly_box{
+    border-radius: 0px 0px 6px 6px;
+	-webkit-border-radius: 0px 0px 6px 6px;
+	-moz-border-radius:  0px 0px 6px 6px;;
+}
+
+.post_text{
+    margin-top: 50px;
+    min-height: 200px;
+}
+
+.post_text>p {
+    border-left: 2px solid #265a88;
+    padding-left: 5px;
+}
+
+.post{
+    padding: 15px;
+}
+
+.post h1{
+    font-size: 1.5em;
+}
+
+aside .poster{
+    margin-top:10px;
+    margin-left: 10px;
+    height: 310px;
+}
+
+.top_border{
+    border-top: 1px solid #e1e2e3;
+}
+
+.bottom_line{
+    border-bottom: 1px solid #265a88;
+}
+
+.comment_list{
+    border-top: 1px solid #e1e2e3;
+    list-style-type: none;
+    padding: 0px;
+    height: auto;
+}
+
+.comment_list>li{
+    padding-bottom:5px;
+}
+
+.thumbnail_comment{
+    width: 40px;
+    height: 40px;
+}
+
+.star{
+    display:inline-block;
+    height: 20px;
+    width: 20px;
+    margin-right: 1px;
+}
+
+.star_full{
+    background: url("../img/one_star_full.png") no-repeat;
+}
+
+.star_half{
+    background: url("../img/one_star_half_full.png") no-repeat;
+}
+
+.star_empty{
+    background: url("../img/one_star_empty.png") no-repeat;
+}
+
+.rating{
+    height: 20px;
+}
+
+.rating_number{
+    height: 20px;
+    font-weight: bold;
+}
+
+.full_rate{
+    color: #265a88;
+}
+
+.low_rate{
+    color: tomato;
+}
+
+.post_user_pic{
+    height: 50px;
+}
+
+.post_user_pic>.thumbnail_text>a{
+    margin-left: 10px;
+}
+
+
+
+.profile-main{
+    margin: auto -10px auto;
+}

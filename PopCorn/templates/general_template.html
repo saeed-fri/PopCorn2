@@ -1,0 +1,151 @@
+<!doctype html>
+<html>
+<head lang="en">
+    {% load static %}
+	<meta charset="UTF-8">
+    <link rel="shortcut icon" type="image/x-icon" href="{% static "favicon.ico" %}" />
+	<link rel='stylesheet' href='{% static 'css/bootstrap.css' %}'>
+	<link rel='stylesheet' href='{% static 'css/general_template_css.css' %}'>
+    <link rel="stylesheet" href='{% static 'css/common.css' %}'/>
+    <link rel="stylesheet" href='{% static 'css/post.css' %}'/>
+    {% block heading %}{% endblock %}
+
+</head>
+
+<body>
+
+	<nav class='navbar navbar-default navbar-fixed-top' id="navbar_bg_color">
+		<div class='container-fluid'>
+            <div class="navbar-header">
+                <img src="{% static "img/site_logo.png" %}" class="navbar_site_logo"/>
+            </div>
+			<div class='collapse navbar-collapse'>
+				<ul class='nav navbar-nav'>
+					<li><a href='#'> Timeline </a></li>
+					<li class='dropdown'>
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Notifications	 <span class="caret"></span></a>
+							<ul class="dropdown-menu" role="menu">
+								<li>
+                                    <a class="username user_comment">Hassan</a> started following you.
+                                </li>
+								<li class="divider"></li>
+								<li>
+                                    <a class="username user_comment">Taghi</a> liked your post about <span class="movie_reference">Catch Me If You Can</span>
+                                </li>
+								<li class="divider"></li>
+								<li>
+                                    <a class="username user_comment">Hadi</a> commented on your post about <span class="movie_reference">Inception</span>
+                                </li>
+								<li class="divider"></li>
+								<li>
+                                    <a class="username user_comment">Hadi</a> commented on <a class="username user_comment">Hassan's</a>  post about <span class="movie_reference">Interstellar</span>
+                                </li>
+							</ul>
+					</li>
+				</ul>
+				<form class="navbar-form navbar-nav" role="search">
+					<div class="form-group">
+						<input id="search_box" type="text" class="form-control" placeholder="Find movies and people" data-provide="typeahead">
+					</div>
+					<button type="submit" class="btn btn-default">Search</button>
+				</form>
+				<ul class='nav navbar-nav navbar-right'>
+					<li><a href='#'> Profile </a></li>
+					<li><a href='#'> Settings </a></li>
+					<li><a href='#'> Exit </a></li>
+                </ul>
+			</div>
+		</div>
+	</nav>
+
+    {% block container %}{% endblock %}
+
+	<aside class="col-md-3">
+
+		<section class='shadow sidebar_section' id="suggested_movies">
+			<h4 class='sidebar_section_header'>Suggested Movies</h4>
+			<ul class="no_bullet_list">
+				<li class="suggested_movie_item">
+                    <h4>Shawshank Redemption</h4>
+                    <img src="../static/img/posters/shawshank.jpg" class="suggested_movie_poster"/>
+                </li>
+
+                <div class="hline"></div>
+
+                <li class="suggested_movie_item">
+                    <h4>12 Angry Men</h4>
+                    <img src="../static/img/posters/12_angry_men.jpg" class="suggested_movie_poster"/>
+                </li>
+			</ul>
+		</section>
+
+		<section class='shadow sidebar_section' id="proposed_users">
+			<h4 class='sidebar_section_header'>Users you may know</h4>
+			<ul class="no_bullet_list">
+				<li> 
+					<img class="circular thumbnail_comment" src="../static/img/test/p2.jpg"/>
+                    <a class="username user_comment">Hassan</a>
+				</li>
+                <div class="hline"></div>
+				<li>
+					<img class="circular thumbnail_comment" src="../static/img/test/p2.jpg"/>
+                    <a class="username user_comment">Taghi</a>
+				</li>
+			</ul>
+		</section>
+
+		<section class='shadow sidebar_section' id="top_movies">
+			<h4 class='sidebar_section_header'>Top Movies</h4>
+			<ol>
+				<li class="top_movie_item">
+                    <h4>Shawshank Redemption</h4>
+                    <div class="rating">
+                        <span class="star star_full"></span><span class="star star_full"></span><span class="star star_full"></span><span class="star star_full"></span><span class="star star_full"></span><div class="rating_number full_rate">5/5</div>
+                    </div>
+                </li>
+                <div class="hline"></div>
+                <li class="top_movie_item">
+                    <h4>12 Angry Men</h4>
+                    <div class="rating">
+                        <span class="star star_full"></span><span class="star star_full"></span><span class="star star_full"></span><span class="star star_full"></span><span class="star star_half"></span><div class="rating_number full_rate">4.5/5</div>
+                    </div>
+                </li>
+                <div class="hline"></div>
+                <li class="top_movie_item">
+                    <h4>The Godfather</h4>
+                    <div class="rating">
+                        <span class="star star_full"></span><span class="star star_full"></span><span class="star star_full"></span><span class="star star_full"></span><span class="star star_half"></span><div class="rating_number full_rate">4.5/5</div>
+                    </div>
+                </li>
+			</ol>
+		</section>
+
+	</aside>
+	
+	<script src="{% static "js/jquery.js" %}"></script>
+	<script src="{% static "js/bootstrap.min.js" %}"></script>
+    <script src="{% static "js/typeahead.js" %}"></script>
+
+    <script>
+        $(document).ready(function($) {
+            $.fn.typeahead.Constructor.prototype.blur = function() {
+                var that = this;
+                setTimeout(function () { that.hide() }, 250);
+            };
+
+            $('#search_box').typeahead({
+                source: function(query, process) {
+                    return ["Deluxe Bicycle", "Super Deluxe Trampoline", "Super Duper Scooter"];
+                }
+            });
+
+            /*$('#search').typeahead({
+              name: 'accounts',
+              local: ['Audi', 'BMW', 'Bugatti', 'Ferrari', 'Ford', 'Lamborghini', 'Mercedes Benz', 'Porsche', 'Rolls-Royce', 'Volkswagen']
+            });*/
+        })
+    </script>
+
+</body>
+
+</html>

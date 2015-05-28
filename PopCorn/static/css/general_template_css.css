@@ -1,0 +1,63 @@
+body {
+	padding-top: 55px;
+}
+
+.sidebar_section {
+	/*border: grey solid;*/
+	border-radius: 3px;
+}
+
+.sidebar_section_header {
+	margin: 0;
+    padding: 5px;
+    background-color: #f6f7f8;
+}
+
+.no_bullet_list {
+    list-style-type: none;
+}
+
+.hline {
+    width:85%;
+    height:1px;
+    background: #5555aa;
+}
+
+.suggested_movie_poster {
+    padding-top: 25px;
+    width: 80%;
+    height: 80%;
+}
+
+.sidebar_section {
+    height: auto;
+    overflow: auto;
+}
+
+#suggested_movies {
+    height: 450px;
+    overflow: scroll;
+}
+
+.suggested_movie_item {
+    padding-bottom: 30px;
+}
+
+.top_movie_item {
+    padding-bottom: 30px;
+}
+
+.dropdown-menu {
+    width: 500px;
+    background-color: #f6f7f8;
+}
+
+.movie_reference {
+    font-style: italic;
+    padding: 5px;
+}
+
+.navbar_site_logo {
+    padding-top: 5px;
+    height: 40px;
+}

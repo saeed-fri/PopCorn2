@@ -1,0 +1,26 @@
+.search_movie_result {
+    /*padding: 10px;*/
+    margin-bottom: 5px;
+    margin-top: 5px;
+    height: 240px;
+    border-radius: 5px;
+}
+
+.search_movie_director {
+    position: absolute;
+    top: 170px;
+}
+
+.search_movie_poster {
+    position: relative;
+    top: 25px;
+}
+
+.search_person_result {
+    text-align: center;
+    height: 120px;
+    padding-top: 10px;
+    /*margin-top: 10px;*/
+    margin: 3px;
+    border-radius: 5px;
+}

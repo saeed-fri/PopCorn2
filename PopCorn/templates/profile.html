@@ -1,0 +1,163 @@
+{% extends "general_template.html" %}
+{% block heading %}
+    {% load static %}
+	<title>Pop Corn|Profile</title>
+    <link rel="stylesheet" href="{% static "css/profile.css" %}"/>
+	<link rel='stylesheet' href='{% static "css/search_results_css.css" %}'>
+    <script src="{% static "js/profile.js" %}"></script>
+    <script src="{% static "js/post.js" %}"></script>
+{% endblock %}
+{%  block container %}
+    <section id="main_content">
+        <div class="col-md-3 right_side text-center">
+            <div class="thumbnail_pic_and_text">
+                <img class="circular thumbnail_pic shadow" src="../static/img/test/p2.jpg"/>
+                <div class="thumbnail_text">
+                    <div class="thumbnail_text_name">John Smith</div>
+                    <div class="thumbnail_text_username">@JonDoe</div>
+                </div>
+            </div>
+            <button class="btn btn-primary" id="follow_btn" onclick="follow(this)">follow</button>
+
+            <div class="panel panel-default follow_box">
+                <div class="panel-body">
+                    <div>132 followers</div>
+                    <div>Follows 130 people</div>
+                    <div>Lives in Tehran, Iran</div>
+                    <!--<ul class="row" id="follow_list">-->
+
+                        <!--<li class="col-md-4 friend_img_div ">-->
+                            <!--<img class="friend_img" src="img/test/p6.png">-->
+                            <!--<div class="follow_user">John Smith</div>-->
+                        <!--</li>-->
+                        <!--<li class="col-md-4 friend_img_div inside_shadow">-->
+                            <!--<img class="friend_img" src="img/test/p7.png">-->
+                            <!--<div class="follow_user">John Doe</div>-->
+                        <!--</li>-->
+                        <!--<li class="col-md-4 friend_img_div">-->
+                            <!--<img class="friend_img" src="img/test/p8.png">-->
+                            <!--<div class="follow_user">Hasan Sa'as</div>-->
+                        <!--</li>-->
+
+                        <!--<li class="col-md-4 friend_img_div">-->
+                            <!--<img class="friend_img" src="img/test/p9.jpg">-->
+                            <!--<div class="follow_user">Mohre</div>-->
+                        <!--</li>-->
+                        <!--<li class="col-md-4 friend_img_div">-->
+                            <!--<img class="friend_img" src="img/test/p10.jpg">-->
+                            <!--<div class="follow_user">Guy</div>-->
+                        <!--</li>-->
+                        <!--<li class="col-md-4 friend_img_div">-->
+                            <!--<img class="friend_img" src="img/test/p6.png">-->
+                            <!--<div class="follow_user">John Smith</div>-->
+                        <!--</li>-->
+
+                        <!--<li class="col-md-4 friend_img_div">-->
+                            <!--<img class="friend_img" src="img/test/p9.jpg">-->
+                            <!--<div class="follow_user">Mohre</div>-->
+                        <!--</li>-->
+                        <!--<li class="col-md-4 friend_img_div">-->
+                            <!--<img class="friend_img" src="img/test/p9.jpg">-->
+                            <!--<div class="follow_user">Mohre</div>-->
+                        <!--</li>-->
+                        <!--<li class="col-md-4 friend_img_div">-->
+                            <!--<img class="friend_img" src="img/test/p7.png">-->
+                            <!--<div class="follow_user">John Doe</div>-->
+                        <!--</li>-->
+                    <!--</ul>-->
+                </div>
+            </div>
+
+        </div>
+        <div class="col-md-6 col-md-offset-3">
+            <article class="post timeline_box shadow">
+                    <aside class="pull-right">
+                        <img src="../static/img/test/poster1.jpg" class="poster pull-right">
+                    </aside>
+                    <h1>
+                        Catch Me If You Can
+                    </h1>
+                    <div class="rating">
+                        <span class="star star_full"></span><span class="star star_full"></span><span class="star star_full"></span><span class="star star_full"></span><span class="star star_half"></span><div class="rating_number full_rate">4.5/5</div>
+                    </div>
+                    <section class="post_text">
+                        <p>
+                            Lorem ipsum dolor sit amet, te eirmod copiosae convenire sed, legendos temporibus eu has, nam sonet meliore graecis ea. Sed legimus verterem patrioque at. Ne atqui consul vis. Te accumsan fabellas disputationi vim, nec ei posse nulla numquam, vidit ipsum praesent ea vix.
+
+                            Porro etiam volutpat vim ut, at equidem insolens singulis eos. Ut quo ludus accumsan, pro nisl molestie te, eos munere nostro epicuri no. No sit tantas utinam sententiae. Ut has tollit aliquip commune. Verear lucilius mei eu. Malis vituperata te his, ad has quod utroque deserunt, ea nam ullum intellegat.
+
+                            Phaedrum urbanitas duo cu. Nec no dolorem neglegentur consectetuer, no mei oblique blandit. Has alia rebum cu, id sea ignota utroque facilisi, id facete insolens intellegat eos. Ei purto zril ius, usu no nobis aperiam. Vis modo commodo quaeque cu.
+
+                            An has idque soleat. Nisl deserunt maiestatis mei et, has agam zril eu, et sumo delenit eum. Ad autem prodesset repudiandae quo, cum ut modo scripta euripidis. Movet impedit qui ne, no accusam comprehensam nam.
+
+                            Eruditi adipisci disputationi vel ei. Impetus propriae accommodare per in, dicat efficiantur nam ad. Mei dicit vidisse labitur ei. Vel no denique electram, nostro quodsi impetus ei usu.
+                        </p>
+                    </section>
+                    <span class="blue_clicks" onclick="likeUnlike(this)">like</span>
+                    <div class="comment bottom_circly_box">
+                        <div>
+                            4 people liked this post &amp; 2 people commented on this post
+                        </div>
+                        <ol class="comment_list">
+                            <li>
+                                <img class="circular thumbnail_comment" src="../static/img/test/p2.jpg"/><a class="username user_comment" href="profile.html">John Smith</a><span>nice movie, realy enjoyed it :))</span>
+                            </li>
+
+                            <li>
+                                <img class="circular thumbnail_comment" src="../static/img/test/p2.jpg"/><a class="username user_comment" href="profile.html">John Smith</a><span>nice movie, realy enjoyed it :))</span>
+                            </li>
+
+                            <li>
+                                <form role="form" onsubmit="return addComment(this);">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" placeholder="Write a comment..." required="required">
+                                    </div>
+                                </form>
+                            </li>
+                        </ol>
+                    </div>
+                </article>
+
+            <article class="post timeline_box shadow">
+                    <aside class="pull-right">
+                        <img src="../static/img/test/poster2.jpg" class="poster pull-right">
+                    </aside>
+                    <h1>
+                        V For Vendetta
+                    </h1>
+                    <div class="rating">
+                        <span class="star star_full"></span><span class="star star_full"></span><span class="star star_full"></span><span class="star star_full"></span><span class="star star_full"></span><div class="rating_number full_rate">5/5</div>
+                    </div>
+                    <section class="post_text">
+                        <p>
+                            Awsome movie, watched it for the fifth time :)))
+                            dying to watch it again :)))))))))))))))))))
+                        </p>
+                    </section>
+                    <span class="blue_clicks" onclick="likeUnlike(this)">like</span>
+                    <div class="comment bottom_circly_box">
+                        <div>
+                            4 people liked this post &amp; 2 people commented on this post
+                        </div>
+                        <ol class="comment_list">
+                            <li>
+                                <img class="circular thumbnail_comment" src="../static/img/test/p2.jpg"/><a class="username user_comment" href="profile.html">John Smith</a><span>nice movie, realy enjoyed it :))</span>
+                            </li>
+
+                            <li>
+                                <img class="circular thumbnail_comment" src="../static/img/test/p2.jpg"/><a class="username user_comment" href="profile.html">John Smith</a><span>nice movie, realy enjoyed it :))</span>
+                            </li>
+
+                            <li>
+                                <form role="form" onsubmit="return addComment(this);">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" placeholder="Write a comment..." required="required">
+                                    </div>
+                                </form>
+                            </li>
+                        </ol>
+                    </div>
+                </article>
+        </div>
+    </section>
+{% endblock %}

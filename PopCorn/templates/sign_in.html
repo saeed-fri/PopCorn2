@@ -1,0 +1,31 @@
+<!doctype html>
+<html>
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+	<title>Pop Corn|Sign In</title>
+	<link rel='stylesheet' href='{% static "css/bootstrap.css" %}'>
+	<link rel="shortcut icon" type="image/x-icon" href="{% static "favicon.ico" %}" />
+	<link rel='stylesheet' href='{% static "css/sign_in_up_css.css" %}'>
+
+</head>
+
+<body>
+    <h2>Welcome to Pop Corn, one of a zillion social networks on the internet!</h2>
+    <form class="col-md-4 col-md-offset-4 sign_form">
+        <div class="form-group">
+            <!--<label for="user_username">Username:</label>-->
+            <input type="text" class="form-control" id="user_username" placeholder="Username">
+        </div>
+        <div class="form-group">
+            <!--<label for="user_password">Password:</label>-->
+            <input type="password" class="form-control" id="user_password" placeholder="Password">
+        </div>
+        <button type="submit" class="btn btn-primary">Sign In</button>
+</form>
+<div class="col-md-4 col-md-offset-4">
+    <div><a href="sign_up.html">Not a member? Sign up right now!</a></div>
+    <div><a href="forgot_password.html">Forgot your password? Don't worry, we'll help you!</a></div>
+</div>
+</body>
+</html>

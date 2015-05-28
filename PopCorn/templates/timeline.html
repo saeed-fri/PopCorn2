@@ -1,0 +1,189 @@
+{% extends "general_template.html" %}
+{% block heading %}
+    {% load static %}
+	<title>Pop Corn|TimeLine</title>
+    <script src="{% static "js/post.js" %}"></script>
+{% endblock %}
+
+{% block container %}
+    <section id="main_content">
+            <div class="col-md-9">
+            <div class="col-md-3 thumbnail_pic_and_text">
+
+                <img class="circular thumbnail_pic shadow pull-right" src="../static/img/test/p2.jpg"/>
+                <div class="thumbnail_text">
+                    <a class="username" href="profile.html">
+                        John Smith
+                    </a>
+                    <a class="date" href="post.html">
+                    <time>12-3-15</time>
+                    </a>
+                </div>
+            </div>
+            <div class="col-md-9">
+                <article class="post timeline_box shadow">
+                    <aside class="pull-right">
+                        <img src="../static/img/test/poster1.jpg" class="poster pull-right"/>
+                    </aside>
+                    <h1>
+                        Catch Me If You Can
+                    </h1>
+                    <div class="rating">
+                        <span class="star star_full"></span><span class="star star_full"></span><span class="star star_full"></span><span class="star star_full"></span><span class="star star_half"></span><div class="rating_number full_rate">4.5/5</div>
+                    </div>
+                    <section class="post_text">
+                        <p>
+                            Lorem ipsum dolor sit amet, te eirmod copiosae convenire sed, legendos temporibus eu has, nam sonet meliore graecis ea. Sed legimus verterem patrioque at. Ne atqui consul vis. Te accumsan fabellas disputationi vim, nec ei posse nulla numquam, vidit ipsum praesent ea vix.
+
+                            Porro etiam volutpat vim ut, at equidem insolens singulis eos. Ut quo ludus accumsan, pro nisl molestie te, eos munere nostro epicuri no. No sit tantas utinam sententiae. Ut has tollit aliquip commune. Verear lucilius mei eu. Malis vituperata te his, ad has quod utroque deserunt, ea nam ullum intellegat.
+
+                            Phaedrum urbanitas duo cu. Nec no dolorem neglegentur consectetuer, no mei oblique blandit. Has alia rebum cu, id sea ignota utroque facilisi, id facete insolens intellegat eos. Ei purto zril ius, usu no nobis aperiam. Vis modo commodo quaeque cu.
+
+                            An has idque soleat. Nisl deserunt maiestatis mei et, has agam zril eu, et sumo delenit eum. Ad autem prodesset repudiandae quo, cum ut modo scripta euripidis. Movet impedit qui ne, no accusam comprehensam nam.
+
+                            Eruditi adipisci disputationi vel ei. Impetus propriae accommodare per in, dicat efficiantur nam ad. Mei dicit vidisse labitur ei. Vel no denique electram, nostro quodsi impetus ei usu.
+                        </p>
+                    </section>
+                    <span class="blue_clicks" onclick="likeUnlike(this)">like</span>
+                    <div class="comment bottom_circly_box">
+                        <div>
+                            4 people liked this post &amp; 2 people commented on this post
+                        </div>
+                        <ol class="comment_list">
+                            <li>
+                                <img class="circular thumbnail_comment" src="../static/img/test/p2.jpg"/><a class="username user_comment" href="profile.html">John Smith</a><span>nice movie, realy enjoyed it :))</span>
+                            </li>
+
+                            <li>
+                                <img class="circular thumbnail_comment" src="../static/img/test/p2.jpg"/><a class="username user_comment" href="profile.html">John Smith</a><span>nice movie, realy enjoyed it :))</span>
+                            </li>
+
+                            <li>
+                                <form role="form" onsubmit="return addComment(this);">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" placeholder="Write a comment..." required="required">
+                                    </div>
+                                </form>
+                            </li>
+                        </ol>
+                    </div>
+                </article>
+            </div>
+
+
+            <div class="col-md-3 thumbnail_pic_and_text">
+
+                <img class="circular thumbnail_pic shadow pull-right" src="../static/img/test/p1.jpg"/>
+                <div class="thumbnail_text">
+                    <a class="username" href="profile.html">
+                        John Smith
+                    </a>
+                    <a class="date">
+                    <time>12-3-13</time>
+                    </a>
+                </div>
+            </div>
+            <div class="col-md-9">
+                <article class="post timeline_box shadow">
+                    <aside class="pull-right">
+                        <img src="../static/img/test/poster2.jpg" class="poster pull-right">
+                    </aside>
+                    <h1>
+                        V For Vendetta
+                    </h1>
+                    <div class="rating">
+                        <span class="star star_full"></span><span class="star star_full"></span><span class="star star_full"></span><span class="star star_full"></span><span class="star star_full"></span><div class="rating_number full_rate">5/5</div>
+                    </div>
+                    <section class="post_text">
+                        <p>
+                            Awsome movie, watched it for the fifth time :)))
+                            dying to watch it again :)))))))))))))))))))
+                        </p>
+                    </section>
+                    <span class="blue_clicks" onclick="likeUnlike(this)">like</span>
+                    <div class="comment bottom_circly_box">
+                        <div>
+                            4 people liked this post &amp; 2 people commented on this post
+                        </div>
+                        <ol class="comment_list">
+                            <li>
+                                <img class="circular thumbnail_comment" src="../static/img/test/p2.jpg"/><a class="username user_comment" href="profile.html">John Smith</a><span>nice movie, realy enjoyed it :))</span>
+                            </li>
+
+                            <li>
+                                <img class="circular thumbnail_comment" src="../static/img/test/p2.jpg"/><a class="username user_comment" href="profile.html">John Smith</a><span>nice movie, realy enjoyed it :))</span>
+                            </li>
+
+                            <li>
+                                <form role="form" onsubmit="return addComment(this);">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" placeholder="Write a comment..." required="required">
+                                    </div>
+                                </form>
+                            </li>
+                        </ol>
+                    </div>
+                </article>
+            </div>
+
+             <div class="col-md-3 thumbnail_pic_and_text">
+
+                <img class="circular thumbnail_pic shadow pull-right" src="../static/img/test/p2.jpg"/>
+                <div class="thumbnail_text">
+                    <a class="username" href="profile.html">
+                        John Smith
+                    </a>
+                    <a class="date">
+                    <time>12-3-15</time>
+                    </a>
+                </div>
+            </div>
+            <div class="col-md-9">
+                <article class="post timeline_box shadow">
+                    <aside class="pull-right">
+                        <img src="../static/img/test/poster3.jpg" class="poster pull-right">
+                    </aside>
+                    <h1>
+                        Alone in the Dark
+                    </h1>
+                    <div class="rating">
+                        <span class="star star_half"></span><span class="star star_empty"></span><span class="star star_empty"></span><span class="star star_empty"></span><span class="star star_empty"></span><div class="rating_number low_rate">0.5/5</div>
+                    </div>
+                    <section class="post_text">
+                        <p>
+                            Lorem ipsum dolor sit amet, te eirmod copiosae convenire sed, legendos temporibus eu has, nam sonet meliore graecis ea. Sed legimus verterem patrioque at. Ne atqui consul vis. Te accumsan fabellas disputationi vim, nec ei posse nulla numquam, vidit ipsum praesent ea vix.
+
+                            Porro etiam volutpat vim ut, at equidem insolens singulis eos. Ut quo ludus accumsan, pro nisl molestie te, eos munere nostro epicuri no. No sit tantas utinam sententiae. Ut has tollit aliquip commune. Verear lucilius mei eu. Malis vituperata te his, ad has quod utroque deserunt, ea nam ullum intellegat.
+
+                            Phaedrum urbanitas duo cu. Nec no dolorem neglegentur consectetuer, no mei oblique blandit. Has alia rebum cu, id sea ignota utroque facilisi, id facete insolens intellegat eos. Ei purto zril ius, usu no nobis aperiam. Vis modo commodo quaeque cu.
+
+                            An has idque soleat. Nisl deserunt maiestatis mei et, has agam zril eu, et sumo delenit eum. Ad autem prodesset repudiandae quo, cum ut modo scripta euripidis. Movet impedit qui ne, no accusam comprehensam nam.
+
+                            Eruditi adipisci disputationi vel ei. Impetus propriae accommodare per in, dicat efficiantur nam ad. Mei dicit vidisse labitur ei. Vel no denique electram, nostro quodsi impetus ei usu.
+                        </p>
+                    </section>
+                    <span class="blue_clicks" onclick="likeUnlike(this)">like</span>
+                    <div class="comment bottom_circly_box">
+                        <div>
+                            4 people liked this post &amp; 1 people commented on this post
+                        </div>
+                        <ol class="comment_list">
+                            <li>
+                                <img class="circular thumbnail_comment" src="../static/img/test/p2.jpg"/><a class="username user_comment" href="profile.html">John Smith</a><span>what a load of crap :|||</span>
+                            </li>
+                            <li>
+                                <form role="form" onsubmit="return addComment(this);">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" placeholder="Write a comment..." required="required">
+                                    </div>
+                                </form>
+                            </li>
+                        </ol>
+                    </div>
+                </article>
+            </div>
+
+        </div>
+
+    </section>
+{% endblock %}

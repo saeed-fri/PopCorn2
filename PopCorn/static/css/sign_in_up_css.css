@@ -1,0 +1,20 @@
+html{
+}
+body {
+    text-align: center;
+
+    background-color:  #f6f7f8;
+    background-image: url("../img/background.png");
+    background-position: bottom;
+    background-repeat: repeat-x;
+    background-attachment:fixed;
+}
+
+.sign_form {
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+.error_message {
+    color: red;
+}

@@ -1,0 +1,15 @@
+.circular {
+	border-radius: 50%;
+	-webkit-border-radius: 50%;
+	-moz-border-radius: 50%;
+}
+
+.shadow {
+    box-shadow: 0 0 8px rgba(0, 0, 200, .5);
+	-webkit-box-shadow: 0 0 8px rgba(0, 0, 200, .5);
+	-moz-box-shadow: 0 0 8px rgba(0, 0, 200, .5);
+}
+
+#navbar_bg_color {
+    background-color: #245269;
+}

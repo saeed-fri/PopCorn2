@@ -1,0 +1,89 @@
+aside{
+    margin: auto 10px 10px 0px;
+}
+
+article>.post_text>p {
+    border-left: none;
+}
+
+.movie-title{
+    display: inline;
+}
+
+#movie-date{
+    display: inline;
+}
+
+#big_star{
+    background: url("../img/big_star.png") no-repeat;
+    background-size: 100% auto;
+    width: 70px;
+    height: 70px;
+    font-weight: bolder;
+    text-align: center;
+    padding-top: 19px;
+    font-size: 30px;
+    color: goldenrod;
+}
+
+#rate_details{
+    color: #245269;
+}
+
+section{
+    position: relative;
+    top: 10px;
+}
+
+#imdb {
+    background: url("../img/imdb.png") no-repeat;
+    display:inline-block;
+    height: 22px;
+    width: 46px;
+    margin-right: 1px;
+}
+
+.main-movie-profile{
+    margin-top: 40px;
+}
+
+th{
+    background-color: #337ab7;
+}
+
+tr:nth-child(even){
+    background-color: #269abc;
+}
+
+.user-rating {
+    unicode-bidi: bidi-override;
+    direction: rtl;
+    position: relative;
+    left: 0px;
+    display:inline-block;
+    padding: 2px!important;
+}
+.user-rating > span {
+    display: inline-block;
+    position: relative;
+    width: 1.1em;
+}
+.user-rating > span:hover:before,
+.user-rating > span:hover ~ span:before {
+    content: "\2605";
+    color: #269abc;
+    position: absolute; /* so the black one covers the other!*/
+}
+
+.rating{
+    display: inline-block;
+}
+
+.well-md{
+    padding: 3px;
+}
+#user-rate-no{
+    display: inline;
+    margin-left: 3px;
+    color: gray;
+}

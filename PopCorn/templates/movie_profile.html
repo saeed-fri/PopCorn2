@@ -1,0 +1,157 @@
+{% extends "general_template.html" %}
+{% block heading %}
+    {% load static %}
+	<title>Pop Corn|Movie Profile</title>
+    <link rel="stylesheet" href="{% static "css/movie.css" %}"/>
+{% endblock %}
+
+{% block container %}
+    <section id="main_content" class="col-md-9 profile-main">
+            <div>
+            <div class="col-md-9 col-md-offset-2">
+                <div class="panel panel-primary main-movie-profile">
+                    <article class="panel-body">
+                        <aside class="pull-left">
+                            <img src="../static/img/test/movie_profile_poster.jpg" class="poster">
+                        </aside>
+                        <h1 class="movie-title">
+                            Death Note
+                        </h1>
+                        <div id="movie-date">
+                            (2006-2007)
+                        </div>
+                        <div class="rating">
+                            <span class="star" id="big_star">4.8</span><span id="rate_details">/5.0 from 4000 users</span>
+                        </div>
+                        <div class="user-rating well well-md">
+                            <p id="user-rate-no" dir="ltr">
+                                -/10
+                            </p>
+                            <span type="button" onclick="rate(this)" data-toggle="modal" data-target="#post" onmouseout="edit_rate_out(this)" onmouseover="edit_rate(this)">☆</span><span type="button" onclick="rate(this)" data-toggle="modal" data-target="#post" onmouseout="edit_rate_out(this)" onmouseover="edit_rate(this)">☆</span><span type="button" onclick="rate(this)" data-toggle="modal" data-target="#post" onmouseout="edit_rate_out(this)" onmouseover="edit_rate(this)">☆</span><span type="button" onclick="rate(this)" data-toggle="modal" data-target="#post" onmouseout="edit_rate_out(this)" onmouseover="edit_rate(this)">☆</span><span type="button" onclick="rate(this)" data-toggle="modal" data-target="#post" onmouseout="edit_rate_out(this)" onmouseover="edit_rate(this)">☆</span><span type="button" onclick="rate(this)" data-toggle="modal" data-target="#post" onmouseout="edit_rate_out(this)" onmouseover="edit_rate(this)">☆</span><span type="button" onclick="rate(this)" data-toggle="modal" data-target="#post" onmouseout="edit_rate_out(this)" onmouseover="edit_rate(this)">☆</span><span type="button" onclick="rate(this)" data-toggle="modal" data-target="#post" onmouseout="edit_rate_out(this)" onmouseover="edit_rate(this)">☆</span><span type="button" onclick="rate(this)" data-toggle="modal" data-target="#post" onmouseout="edit_rate_out(this)" onmouseover="edit_rate(this)">☆</span><span type="button" onclick="rate(this)" data-toggle="modal" data-target="#post" onmouseout="edit_rate_out(this)" onmouseover="edit_rate(this)">☆</span>
+
+                        </div>
+                        <section class="post_text">
+                            <p>
+                                An intelligent high school student goes on a secret crusade to eliminate criminals from the world after discovering a notebook capable of killing anyone whose name is written into it.
+                            </p>
+                            <a id="imdb"></a>
+                        </section>
+                    </article>
+                </div>
+
+                <div class="panel panel-primary main-movie-profile">
+                    <article class="panel-body">
+                        <h1 class="movie-title">
+                            Cast
+                        </h1>
+                        <section class="post_text">
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>Name</th>
+                                            <th>Role</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Mamoru Miyano</td>
+                                            <td>Light Yagami</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Brad Swaile</td>
+                                            <td>Light Yagami</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Vincent Tong</td>
+                                            <td>Touta Matsuda</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </section>
+                            <hr>
+                        <h1>
+                            Crew
+                        </h1>
+                        <section>
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>Name</th>
+                                            <th>Role</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>John Smith</td>
+                                            <td>Camera guy</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Producer</td>
+                                            <td>Math</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Vincent Tong</td>
+                                            <td>Touta Matsuda</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </section>
+                    </article>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Modal -->
+        <div class="modal fade" id="post" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="myModalLabel">Post it!</h4>
+                    </div>
+                    <div class="modal-body">
+                        <article class="post ">
+                            <aside class="pull-right">
+                                <img src="../static/img/test/poster1.jpg" class="poster pull-right">
+                            </aside>
+                            <div class="thumbnail_pic_and_text post_user_pic">
+                                <img class="circular thumbnail_pic shadow pull-left" src="../static/img/test/p2.jpg"/>
+                                <div class="thumbnail_text pull-left">
+                                    <a class="username" href="profile.html">
+                                        John Smith
+                                    </a>
+                                    <a class="date pull-left" href="post.html">
+                                        <time>12-3-15</time>
+                                    </a>
+                                </div>
+                            </div>
+                            <h1>
+                                Catch Me If You Can
+                            </h1>
+                            <div class="rating" id="rating-stars">
+                                <span class="star star_full"></span><span class="star star_full"></span><span class="star star_full"></span><span class="star star_full"></span><span class="star star_half"></span><div class="rating_number full_rate" id="rate-no">4.5/5</div>
+                            </div>
+                            <section class="post_text">
+                                <form>
+                                    <textarea class="form-control" rows="5"></textarea>
+                                </form>
+                            </section>
+                        </article>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Post it!</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="../static/js/post.js"></script>
+        <script src="../static/js/movie.js"></script>
+
+    </section>
+{% endblock %}
