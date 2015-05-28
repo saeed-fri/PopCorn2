@@ -1,7 +1,7 @@
 {% extends "general_template.html" %}
 {% block heading %}
     {% load static %}
-	<title>Pop Corn|Movie Profile</title>
+	<title>{{ movie.name }} | Pop Corn</title>
     <link rel="stylesheet" href="{% static "css/movie.css" %}"/>
 {% endblock %}
 
@@ -12,16 +12,16 @@
                 <div class="panel panel-primary main-movie-profile">
                     <article class="panel-body">
                         <aside class="pull-left">
-                            <img src="../static/img/test/movie_profile_poster.jpg" class="poster">
+                            <img src="{% static image_address %}" class="poster">
                         </aside>
                         <h1 class="movie-title">
-                            Death Note
+                            {{ movie.name }}
                         </h1>
-                        <div id="movie-date">
-                            (2006-2007)
-                        </div>
+{#                        <div id="movie-date">#}
+{#                            (2006-2007)#}
+{#                        </div>#}
                         <div class="rating">
-                            <span class="star" id="big_star">4.8</span><span id="rate_details">/5.0 from 4000 users</span>
+                            <span class="star" id="big_star">{{ rating }}</span><span id="rate_details">/5.0 from {{ movie.rating_count }} users</span>
                         </div>
                         <div class="user-rating well well-md">
                             <p id="user-rate-no" dir="ltr">
@@ -32,9 +32,9 @@
                         </div>
                         <section class="post_text">
                             <p>
-                                An intelligent high school student goes on a secret crusade to eliminate criminals from the world after discovering a notebook capable of killing anyone whose name is written into it.
+                                {{ movie.summery }}
                             </p>
-                            <a id="imdb"></a>
+                            <a id="imdb" href="{{ movie.imdb }}"></a>
                         </section>
                     </article>
                 </div>
@@ -54,18 +54,12 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td>Mamoru Miyano</td>
-                                            <td>Light Yagami</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Brad Swaile</td>
-                                            <td>Light Yagami</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Vincent Tong</td>
-                                            <td>Touta Matsuda</td>
-                                        </tr>
+                                        {% for cast in casts %}
+                                            <tr>
+                                                <td>{{ cast.name }}</td>
+                                                <td>{{ cast.role }}</td>
+                                            </tr>
+                                        {% endfor %}
                                     </tbody>
                                 </table>
                             </div>
@@ -84,18 +78,12 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td>John Smith</td>
-                                            <td>Camera guy</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Producer</td>
-                                            <td>Math</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Vincent Tong</td>
-                                            <td>Touta Matsuda</td>
-                                        </tr>
+                                        {% for crew in crews %}
+                                            <tr>
+                                                <td>{{ crew.name }}</td>
+                                                <td>{{ crew.role }}</td>
+                                            </tr>
+                                        {% endfor %}
                                     </tbody>
                                 </table>
                             </div>
@@ -115,9 +103,9 @@
                         <h4 class="modal-title" id="myModalLabel">Post it!</h4>
                     </div>
                     <div class="modal-body">
-                        <article class="post ">
+                        <article class="post">
                             <aside class="pull-right">
-                                <img src="../static/img/test/poster1.jpg" class="poster pull-right">
+                                <img src="{% static image_address %}" class="poster pull-right">
                             </aside>
                             <div class="thumbnail_pic_and_text post_user_pic">
                                 <img class="circular thumbnail_pic shadow pull-left" src="../static/img/test/p2.jpg"/>
@@ -126,12 +114,12 @@
                                         John Smith
                                     </a>
                                     <a class="date pull-left" href="post.html">
-                                        <time>12-3-15</time>
+                                        <time>{% now "jS F Y H:i" %}</time>
                                     </a>
                                 </div>
                             </div>
                             <h1>
-                                Catch Me If You Can
+                                {{ movie.name }}
                             </h1>
                             <div class="rating" id="rating-stars">
                                 <span class="star star_full"></span><span class="star star_full"></span><span class="star star_full"></span><span class="star star_full"></span><span class="star star_half"></span><div class="rating_number full_rate" id="rate-no">4.5/5</div>
