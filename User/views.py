@@ -1,6 +1,7 @@
 from django.shortcuts import render
 
 
+#just testing
 def register(request):
     # form = Users(request.POST)
     return render(request, "sign_up.html", {
