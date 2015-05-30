@@ -12,7 +12,7 @@ urlpatterns = [
     url(r'^post/','Post.views.post'),
     url(r'^timeline/', 'Post.views.timeline'),
     url(r'^register/', 'User.views.register'),
-    url(r'^forget/', 'User.views.forget'),
+    url(r'^forgot/', 'User.views.forgot'),
     url(r'^user/', 'User.views.profile'),
     url(r'^related/', 'User.views.related_user'),
     url(r'^login/', 'User.views.sign_in'),
