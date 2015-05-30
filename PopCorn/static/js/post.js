@@ -7,7 +7,7 @@ function addComment(commentForm) {
     var comment = document.createElement("span");
     newComment.appendChild(userPic);
     newComment.appendChild(userName);
-    commentBox = commentForm.firstElementChild.firstElementChild;
+    var commentBox = commentForm.firstElementChild.firstElementChild;
     comment.innerHTML = commentBox.value;
     commentBox.value = "";
     newComment.appendChild(comment);

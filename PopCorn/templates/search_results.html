@@ -1,19 +1,17 @@
 {% extends "general_template.html" %}
 {% block heading %}
-    {% load static %}
 	<title>Pop Corn|Search</title>
-	<link rel='stylesheet' href='{% static "css/search_results_css.css" %}'>
-	<script src="{% static "js/jquery.js" %}"></script>
-	<script src="{% static "js/bootstrap.min.js" %}"></script>
+    {% load static %}
+	<link rel='stylesheet' href="{% static "css/search_results_css.css" %}">
 {% endblock %}
 {% block container %}
     <section id="main_content">
-        <div style="margin-bottom: 20px">
-            <div class="form-group col-md-4">
-                <input type="search" class="form-control" placeholder="Find movies and people">
-            </div>
-            <button type="submit" class="btn btn-default">Search</button>
-        </div>
+        <form style="margin-bottom: 20px">
+                <div class="form-group col-md-4">
+                    <input id="search_input" type="search" class="form-control" placeholder="Find movies and people">
+                </div>
+            <button type="submit" class="btn btn-default" onclick="search()">Search</button>
+        </form>
 
         <div role="tabpanel">
             <ul class="nav nav-tabs" role="tablist">
@@ -29,15 +27,13 @@
             <div class="tab-content">
                 <section role="tabpanel" class="col-md-9 tab-pane active" id="movies">
                     {% for movie in movie_results %}
-                        <div class="search_movie_result col-md-4">
+                        <div class="search_movie_result col-md-4" id="t{{ movie.id }}">
                         {% with movie.id|stringformat:"s" as id %}
                             <img src="{% static 'img/posters/'|add:id|add:'.jpg' %}" class="col-md-6 search_movie_poster"/>
                         {% endwith %}
                         <div class="col-md-6 search_movie_info">
                             <h4>{{ movie.name }}</h4>
-                            <div class="rating">
-                                <span class="star star_full"></span><span class="star star_full"></span><span class="star star_full"></span><span class="star star_full"></span><span class="star star_half"></span><div class="rating_number full_rate">4.5/5</div>
-                            </div>
+                            <div class="rating" hidden="hidden"><span class="star star_full"></span><span class="star star_full"></span><span class="star star_full"></span><span class="star star_full"></span><span class="star star_half"></span><div class="rating_number full_rate" id="r{{ movie.id }}" hidden="hidden">{{ movie.rating_count }} {{ movie.rating_sum }}</div></div>
                             <div class="search_movie_director"><strong>Director: </strong> {{ movie.director }}</div>
                         </div>
                     </div>
@@ -102,4 +98,14 @@
         </script>
 
     </section>
+{% endblock %}
+
+{% block extra_js %}
+	<script src="{% static "js/jquery.js" %}"></script>
+	<script src="{% static "js/bootstrap.min.js" %}"></script>
+    <script src="{% static "js/movie.js" %}"></script>
+    <script src="{% static "js/search.js" %}"></script>
+    <script>
+        initialRate();
+    </script>
 {% endblock %}

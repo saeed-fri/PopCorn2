@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
 <head lang="en">
     {% load static %}
@@ -9,6 +9,9 @@
     <link rel="stylesheet" href='{% static 'css/common.css' %}'/>
     <link rel="stylesheet" href='{% static 'css/post.css' %}'/>
     {% block heading %}{% endblock %}
+    <script>
+        static_url = "{% static '' %}";
+    </script>
 
 </head>
 
@@ -145,6 +148,8 @@
             });*/
         })
     </script>
+
+    {% block extra_js %}{% endblock %}
 
 </body>
 

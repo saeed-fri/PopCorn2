@@ -23,10 +23,9 @@ function edit_rate_out(star){
     var rate_no = document.getElementById("user-rate-no").innerHTML = "-/10";
 }
 
-function edit_stars(rate) {
-    var stars = document.getElementById("rating-stars").getElementsByClassName("star");
+function edit_stars(rate, stars) {
     var i = 0;
-    temp = rate / 2;
+    var temp = rate / 2;
     if (rate % 2 == 1)
         temp -= 1;
     for (; i < temp; i++) {
@@ -42,7 +41,7 @@ function edit_stars(rate) {
 }
 function edit_modal(rate){
     document.getElementById("rate-no").innerHTML = rate/2 + "/5";
-    edit_stars(rate);
+    edit_stars(rate,document.getElementById("rating-stars").getElementsByClassName("star"));
     var today = new Date();
     var dd = today.getDate();
     var mm = today.getMonth()+1; //January is 0!
