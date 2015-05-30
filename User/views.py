@@ -8,7 +8,7 @@ def register(request):
         })
 
 
-def forget(request):
+def forgot(request):
     # form = Users(request.POST)
     return render(request, "forgot_password.html", {
         # 'form': form

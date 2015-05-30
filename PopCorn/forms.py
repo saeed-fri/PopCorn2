@@ -1,6 +1,11 @@
 from django import forms
-from .models import Users
+from User.models import User
 
+
+class LoginForm(forms.ModelForm):
+    class Meta:
+        model = User
+        fields = ['username', 'password']
 
 class RegisterForm(forms.Form):
     username = forms.CharField(required=True)
@@ -16,16 +21,7 @@ name = models.CharField(max_length=100)
 comment = models.TextField()
 timestamp = models.DateTimeField(default=datetime.datetime.now)
 """
-
-
 class RegisterModelForm(forms.ModelForm):
     class Meta:
-        model = Users
+        model = User
         fields = ['username', 'alias', 'password', 'email', 'birthday']
-
-# class RegisterForm(forms.ModelForm):
-# 	birthday = forms.DateTimeField()
-
-# 	class Meta:
-# 		model = User
-# 		exclude = ['age',]
