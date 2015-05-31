@@ -8,7 +8,7 @@ urlpatterns = [
 
     url(r'^admin/', include(admin.site.urls)),
     url(r'^movie/(?P<movie_id>\d+)/', 'Movie.views.movie'),
-    url(r'^search/(?P<query>\w*)', 'PopCorn.views.search'),
+    url(r'^search/(?P<query>[a-zA-Z0-9+\ ]*)', 'PopCorn.views.search'),
     url(r'^post/','Post.views.post'),
     url(r'^timeline/', 'Post.views.timeline'),
     url(r'^register/', 'User.views.register'),
@@ -16,4 +16,5 @@ urlpatterns = [
     url(r'^user/', 'User.views.profile'),
     url(r'^related/', 'User.views.related_user'),
     url(r'^login/', 'User.views.sign_in'),
+    url(r'^search_ajax/', 'PopCorn.views.search_ajax')
 ]
