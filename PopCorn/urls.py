@@ -9,7 +9,7 @@ urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
     url(r'^movie/(?P<movie_id>\d+)/', 'Movie.views.movie'),
     url(r'^search/(?P<query>[a-zA-Z0-9+\ ]*)', 'PopCorn.views.search'),
-    url(r'^post/','Post.views.post'),
+    url(r'^post/(?P<post_id>\d+)/', 'Post.views.post'),
     url(r'^timeline/', 'Post.views.timeline'),
     url(r'^register/', 'User.views.register'),
     url(r'^forgot/', 'User.views.forgot'),

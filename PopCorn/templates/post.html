@@ -10,7 +10,7 @@
         <div class="col-md-7 col-md-offset-2">
          <article class="post timeline_box shadow">
                 <aside class="pull-right">
-                    <img src="../static/img/test/poster1.jpg" class="poster pull-right">
+                    <img src="{% static image_address %}" class="poster pull-right">
                 </aside>
                 <div class="thumbnail_pic_and_text post_user_pic">
                     <img class="circular thumbnail_pic shadow pull-left" src="../static/img/test/p2.jpg"/>
@@ -19,43 +19,30 @@
                             John Smith
                         </a>
                         <a class="date pull-left" href="post.html">
-                            <time>12-3-15</time>
+                            <time>{{ post.date|date:"M d, Y" }}</time>
                         </a>
                     </div>
                 </div>
                 <h1>
-                    Catch Me If You Can
+                    {{ post.movie.name }}
                 </h1>
                 <div class="rating">
                     <span class="star star_full"></span><span class="star star_full"></span><span class="star star_full"></span><span class="star star_full"></span><span class="star star_half"></span><div class="rating_number full_rate">4.5/5</div>
                 </div>
                 <section class="post_text">
-                    <p>
-                        Lorem ipsum dolor sit amet, te eirmod copiosae convenire sed, legendos temporibus eu has, nam sonet meliore graecis ea. Sed legimus verterem patrioque at. Ne atqui consul vis. Te accumsan fabellas disputationi vim, nec ei posse nulla numquam, vidit ipsum praesent ea vix.
-
-                        Porro etiam volutpat vim ut, at equidem insolens singulis eos. Ut quo ludus accumsan, pro nisl molestie te, eos munere nostro epicuri no. No sit tantas utinam sententiae. Ut has tollit aliquip commune. Verear lucilius mei eu. Malis vituperata te his, ad has quod utroque deserunt, ea nam ullum intellegat.
-
-                        Phaedrum urbanitas duo cu. Nec no dolorem neglegentur consectetuer, no mei oblique blandit. Has alia rebum cu, id sea ignota utroque facilisi, id facete insolens intellegat eos. Ei purto zril ius, usu no nobis aperiam. Vis modo commodo quaeque cu.
-
-                        An has idque soleat. Nisl deserunt maiestatis mei et, has agam zril eu, et sumo delenit eum. Ad autem prodesset repudiandae quo, cum ut modo scripta euripidis. Movet impedit qui ne, no accusam comprehensam nam.
-
-                        Eruditi adipisci disputationi vel ei. Impetus propriae accommodare per in, dicat efficiantur nam ad. Mei dicit vidisse labitur ei. Vel no denique electram, nostro quodsi impetus ei usu.
-                    </p>
+                    <p>{{ post.text }}</p>
                 </section>
                 <span class="blue_clicks" onclick="likeUnlike(this)">like</span>
                 <div class="comment bottom_circly_box">
                     <div>
-                        4 people liked this post &amp; 2 people commented on this post
+                        {{ post.likes }} people liked this post &amp; {{ commentsCount }} people commented on this post
                     </div>
                     <ol class="comment_list">
+                        {% for comment in comments %}
                         <li>
-                            <img class="circular thumbnail_comment" src="../static/img/test/p2.jpg"/><a class="username user_comment" href="profile.html">John Smith</a><span>nice movie, realy enjoyed it :))</span>
+                            <img class="circular thumbnail_comment" src="../static/img/test/p2.jpg"/><a class="username user_comment" href="/user/{{ comment.author_id }}">{{ comment.author }}</a><span>{{ comment.text }}</span>
                         </li>
-
-                        <li>
-                            <img class="circular thumbnail_comment" src="../static/img/test/p2.jpg"/><a class="username user_comment" href="profile.html">John Smith</a><span>nice movie, realy enjoyed it :))</span>
-                        </li>
-
+                        {% endfor %}
                         <li>
                             <form role="form" onsubmit="return addComment(this);">
                                 <div class="form-group">
