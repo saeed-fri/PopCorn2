@@ -14,3 +14,6 @@ class UserProfile(models.Model):  #SiteUser is an extension of User
     user = models.OneToOneField(User)
     alias = models.CharField(max_length=50)
     birthday = models.DateField()
+
+    def __str__(self):
+        return str(self.user)
