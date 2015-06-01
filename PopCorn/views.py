@@ -2,7 +2,6 @@ from django.shortcuts import render
 from Movie.models import Movie
 import json
 from django.http import HttpResponse
-from django.core import serializers
 
 def search(request, query):
     movie_results = []
