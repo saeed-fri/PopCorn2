@@ -2,9 +2,7 @@ from django.shortcuts import render
 
 
 def post(request):
-    # form = Users(request.POST)
     return render(request, "post.html", {
-        # 'form': form
         })
 
 
