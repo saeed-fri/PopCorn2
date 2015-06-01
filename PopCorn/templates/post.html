@@ -3,6 +3,9 @@
     {% load static %}
 	<title>Pop Corn|Post</title>
     <script src="{% static "js/post.js" %}"></script>
+    <script>
+        var post_id = {{ post.id }}
+    </script>
 {% endblock %}
 
 {% block container %}
@@ -35,7 +38,7 @@
                 <span class="blue_clicks" onclick="likeUnlike(this)">like</span>
                 <div class="comment bottom_circly_box">
                     <div>
-                        {{ post.likes }} people liked this post &amp; {{ commentsCount }} people commented on this post
+                        <span id=likeCount>{{ likeCount }}</span> people liked this post &amp; <span id="commentCount">{{ commentsCount }}</span> people commented on this post
                     </div>
                     <ol class="comment_list">
                         {% for comment in comments %}

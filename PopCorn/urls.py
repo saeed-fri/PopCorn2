@@ -7,6 +7,9 @@ urlpatterns = [
     # url(r'^blog/', include('blog.urls')),
 
     url(r'^admin/', include(admin.site.urls)),
+    url(r'^comment/(?P<post_id>\d+)/(?P<user_id>\d+)/', 'Post.views.comment'),
+    url(r'^like/(?P<post_id>\d+)/(?P<user_id>\d+)/', 'Post.views.like'),
+    url(r'^unlike/(?P<post_id>\d+)/(?P<user_id>\d+)/', 'Post.views.unlike'),
     url(r'^movie/(?P<movie_id>\d+)/', 'Movie.views.movie'),
     url(r'^search/(?P<query>[a-zA-Z0-9+\ ]*)', 'PopCorn.views.search'),
     url(r'^post/(?P<post_id>\d+)/', 'Post.views.post'),
