@@ -28,9 +28,22 @@ function search(){
                     secondDiv.appendChild(h4);
                     var rating = document.createElement("div");
                     rating.className = "rating";
+                    var starSpans = [];
+                    for(var i = 0; i < 5; i++){
+                        starSpans[i] = document.createElement("span");
+                        starSpans[i].className = "star";
+                        starSpans[i].setAttribute("hidden", "hidden");
+                        rating.appendChild(starSpans[i]);
+                    }
+                    var rateNumber = document.createElement("div");
+                    rateNumber.className = "rating_number full_rate";
+                    rateNumber.id = "r" + key.split('t')[1];
+                    rateNumber.innerHTML = movie.rating_count + " " + movie.rating_sum;
+                    rating.appendChild(rateNumber);
                     //rate(rating);
                     //stars
-                                //<span class="star star_full"></span><span class="star star_full"></span><span class="star star_full"></span><span class="star star_full"></span><span class="star star_half"></span><div class="rating_number full_rate">4.5/5</div>
+                                //<span class="star star_full"></span><span class="star star_full"></span><span class="star star_full"></span><span class="star star_full"></span><span class="star star_half"></span>
+                                // <div class="rating_number full_rate">4.5/5</div>
 
                     secondDiv.appendChild(rating);
                     var fourthDiv = document.createElement("div");
@@ -44,7 +57,7 @@ function search(){
                     firstDiv.appendChild(secondDiv);
                     movies.appendChild(firstDiv);
                 }
-
+            initialRate();
             }
         }
     }
@@ -66,7 +79,7 @@ function initialRate(){
 }
 
 function search_rate(id, count, sum, pid){
-    console.log(id + ' ' + pid)
+    console.log(id + ' ' + pid + ' ' + count)
     var rating = document.getElementById(id);
     var rate = 0;
     if(count != 0) {

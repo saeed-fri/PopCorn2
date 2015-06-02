@@ -42,46 +42,13 @@
 
 
                 <section role="tabpanel" class="col-md-9 tab-pane" id="people">
-                    <div class="search_person_result col-md-2 shadow">
+                    {% for user in user_results %}
+                    <div class="search_person_result col-md-2">
                         <img class="circular thumbnail_pic shadow" src="../static/img/test/p2.jpg"/>
-                        <div class="thumbnail_text_name"><a href="#"> John Smith</a></div>
-                        <div class="thumbnail_user_age"><strong>Age: </strong>25</div>
+                        <div class="thumbnail_text_name"><a href="#">{{ user.alias }}</a></div>
+                        <div class="thumbnail_user_age"><strong>Age:</strong>about {{ user.birthday|date:"Y"|add:year }}</div>
                     </div>
-                    <div class="search_person_result col-md-2 shadow">
-                        <img class="circular thumbnail_pic shadow" src="../static/img/test/p2.jpg"/>
-                        <div class="thumbnail_text_name"><a href="#"> John Smith</a></div>
-                        <div class="thumbnail_user_age"><strong>Age: </strong>25</div>
-                    </div>
-                    <div class="search_person_result col-md-2 shadow">
-                        <img class="circular thumbnail_pic shadow" src="../static/img/test/p2.jpg"/>
-                        <div class="thumbnail_text_name"><a href="#"> John Smith</a></div>
-                        <div class="thumbnail_user_age"><strong>Age: </strong>25</div>
-                    </div>
-                    <div class="search_person_result col-md-2 shadow">
-                        <img class="circular thumbnail_pic shadow" src="../static/img/test/p2.jpg"/>
-                        <div class="thumbnail_text_name"><a href="#"> John Smith</a></div>
-                        <div class="thumbnail_user_age"><strong>Age: </strong>25</div>
-                    </div>
-                    <div class="search_person_result col-md-2 shadow">
-                        <img class="circular thumbnail_pic shadow" src="../static/img/test/p2.jpg"/>
-                        <div class="thumbnail_text_name"><a href="#"> John Smith</a></div>
-                        <div class="thumbnail_user_age"><strong>Age: </strong>25</div>
-                    </div>
-                    <div class="search_person_result col-md-2 shadow">
-                        <img class="circular thumbnail_pic shadow" src="../static/img/test/p2.jpg"/>
-                        <div class="thumbnail_text_name"><a href="#"> John Smith</a></div>
-                        <div class="thumbnail_user_age"><strong>Age: </strong>25</div>
-                    </div>
-                    <div class="search_person_result col-md-2 shadow">
-                        <img class="circular thumbnail_pic shadow" src="../static/img/test/p2.jpg"/>
-                        <div class="thumbnail_text_name"><a href="#"> John Smith</a></div>
-                        <div class="thumbnail_user_age"><strong>Age: </strong>25</div>
-                    </div>
-                    <div class="search_person_result col-md-2 shadow">
-                        <img class="circular thumbnail_pic shadow" src="../static/img/test/p2.jpg"/>
-                        <div class="thumbnail_text_name"><a href="#"> John Smith</a></div>
-                        <div class="thumbnail_user_age"><strong>Age: </strong>25</div>
-                    </div>
+                    {% endfor %}
                 </section>
             </div>
         </div>
