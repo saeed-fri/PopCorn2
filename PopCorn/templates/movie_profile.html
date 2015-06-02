@@ -3,6 +3,10 @@
     {% load static %}
 	<title>{{ movie.name }} | Pop Corn</title>
     <link rel="stylesheet" href="{% static "css/movie.css" %}"/>
+    <script>
+        var user_id = {{ user.id }}
+        var movie_id = {{ movie.id }}
+    </script>
 {% endblock %}
 
 {% block container %}
@@ -112,11 +116,11 @@
                             <div class="thumbnail_pic_and_text post_user_pic">
                                 <img class="circular thumbnail_pic shadow pull-left" src="../static/img/test/p2.jpg"/>
                                 <div class="thumbnail_text pull-left">
-                                    <a class="username" href="profile.html">
-                                        John Smith
+                                    <a class="username" href="/user/{{ user.id }}">
+                                        {{ user.username }}
                                     </a>
                                     <a class="date pull-left" href="post.html">
-                                        <time>{% now "jS F Y H:i" %}</time>
+                                        <time id="post-date"></time>
                                     </a>
                                 </div>
                             </div>
@@ -128,14 +132,14 @@
                             </div>
                             <section class="post_text">
                                 <form>
-                                    <textarea class="form-control" rows="5"></textarea>
+                                    <textarea class="form-control" rows="5" id="post_text"></textarea>
                                 </form>
                             </section>
                         </article>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Post it!</button>
+                        <button type="button" class="btn btn-primary" onclick="post()">Post it!</button>
                     </div>
                 </div>
             </div>

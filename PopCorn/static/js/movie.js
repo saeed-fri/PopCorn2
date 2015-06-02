@@ -55,3 +55,21 @@ function edit_modal(rate){
     today = dd + '-' + mm + '-' + yy;
     document.getElementById("post").getElementsByTagName("time")[0].innerHTML = today;
 }
+
+
+function post(){
+    var text = document.getElementById('post_text').value;
+    var rate = document.getElementById('rate-no').innerHTML.split('/')[0] * 2;
+    var date = document.getElementById('post-date').innerHTML;
+    console.log(decodeURI(text))
+    var xhr = new XMLHttpRequest();
+    xhr.open('get', '/addPost/' + user_id + '/' + movie_id + '/' + rate + '/?text=' + decodeURI(text));
+	xhr.onreadystatechange = function() {
+		if(xhr.readyState === 4) {
+            if (xhr.status === 200) {
+                $('#post').modal('hide');
+            }
+        }
+    }
+    xhr.send(null)
+}

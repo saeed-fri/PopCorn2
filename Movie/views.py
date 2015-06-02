@@ -1,8 +1,11 @@
 from django.http import Http404
 from django.shortcuts import render
 from .models import Movie, Cast, Crew
+from User.views import login_required
+from User.models import UserProfile
 
 
+@login_required(login_url='/login/')
 def movie(request,movie_id):
     movie_o = Movie.objects.filter(id=movie_id)
     if movie_o.__len__() > 0:
@@ -17,10 +20,12 @@ def movie(request,movie_id):
         rating /= 2
     else:
         rating = '-'
+    # print(request.user.alias)
     return render(request, "movie_profile.html", {
         'movie': movie_o,
         'image_address': 'img/posters/' + str(movie_o.id) + '.jpg',
         'rating': rating,
         'casts': casts,
         'crews': crews,
+        'user': request.user
         })
