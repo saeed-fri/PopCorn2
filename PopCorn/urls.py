@@ -17,6 +17,9 @@ urlpatterns = [
     url(r'^register/', 'User.views.register'),
     url(r'^forgot/', 'User.views.forgot_password'),
     url(r'^user/(?P<username>[a-zA-Z0-9]+)/', 'User.views.profile'),
+    url(r'^follow/(?P<username>[a-zA-Z0-9]+)/$', 'User.views.follow'),
+    url(r'^followers/(?P<username>[a-zA-Z0-9]+)/', 'User.views.show_followers'),
+    url(r'^followees/(?P<username>[a-zA-Z0-9]+)/', 'User.views.show_followees'),
     url(r'^related/', 'User.views.related_user'),
     url(r'^login/', 'User.views.sign_in'),
     url(r'^search_ajax/', 'PopCorn.views.search_ajax')
