@@ -16,7 +16,7 @@ urlpatterns = [
     url(r'^timeline/', 'Post.views.timeline'),
     url(r'^register/', 'User.views.register'),
     url(r'^forgot/', 'User.views.forgot_password'),
-    url(r'^user/(?P<user_id>\d+)/', 'User.views.profile'),
+    url(r'^user/(?P<username>[a-zA-Z0-9]+)/', 'User.views.profile'),
     url(r'^related/', 'User.views.related_user'),
     url(r'^login/', 'User.views.sign_in'),
     url(r'^search_ajax/', 'PopCorn.views.search_ajax')
