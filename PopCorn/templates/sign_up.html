@@ -12,42 +12,51 @@
 </head>
 
 <body>
-    <form class="form-horizontal col-md-4 col-md-offset-4 sign_form">
-        <div id="general_err" class="error_message"></div>
+
+    <form class="form-horizontal col-md-4 col-md-offset-4 sign_form" method="POST">
+        {% csrf_token %}
+        <div id="general_err" class="error_message">{{ form.non_field_errors }}</div>
         <div class="form-group">
-            <label for="user_username">Username:</label>
+            {{ form.username.errors }}
+            <label for="{{ form.username.id_for_label }}">Username:</label>
             <div id="user_username_err" class="error_message"></div>
-            <input type="text" class="form-control" id="user_username" placeholder="Username" required title="this field is required"/>
+            {{ form.username }}
         </div>
         <div class="form-group">
-            <label for="alias">Alias(people will know you with this name):</label>
+            {{ form.alias.errors }}
+            <label for="{{ form.alias.id_for_label }}">Alias(people will know you with this name):</label>
             <div id="alias_err" class="error_message"></div>
-            <input type="text" class="form-control" id="alias" placeholder="Alias"/>
+            {{ form.alias }}
         </div>
         <div class="form-group">
-            <label for="user_password">Password:</label>
+            {{ formpassword.errors }}
+            <label for="{{ form.password.id_for_label }}">Password:</label>
             <div id="user_password_err" class="error_message"></div>
-            <input type="password" class="form-control" id="user_password" placeholder="Password"/>
+            {{ form.password }}
         </div>
         <div class="form-group">
-            <label for="confirm_password">Confirm password:</label>
+            {{ form.confirm_password.errors }}
+            <label for="{{ form.confirm_password.id_for_label }}">Confirm password:</label>
             <div id="confirm_password_err" class="error_message"></div>
-            <input type="password" class="form-control" id="confirm_password" placeholder="Confirm password"/>
+            {{ form.confirm_password }}
         </div>
         <div class="form-group">
-            <label for="email_address">Your email address:</label>
+            {{ form.email.errors }}
+            <label for="{{ form.email.id_for_label }}">Your email address:</label>
             <div id="email_address_err" class="error_message"></div>
-            <input type="email" class="form-control" id="email_address" placeholder="Your email"/>
+            {{ form.email }}
         </div>
         <div class="form-group">
-            <label for="birth_date">Your date of birth:</label>
+            {{ form.birthday.errors }}
+            <label for="{{ form.birthday.id_for_label }}">Your date of birth:</label>
             <div id="birth_date_err" class="error_message"></div>
-            <input type="text" class="form-control" id="birth_date" placeholder="DD/MM/YYYY"/>
+            {{ form.birthday }}
         </div>
 
         <button type="submit" class="btn btn-primary">Sign me up</button>
 
     </form>
+
     <div class="col-md-4 col-md-offset-4">
         <div><a href="/login">Return to the sign-in page.</a></div>
     </div>
@@ -76,10 +85,17 @@
 
         // custom validations
         if(validated) {
+            /*
             var email = document.getElementById("email_address").value;
             var pass1 = document.getElementById("user_password").value;
             var pass2 = document.getElementById("confirm_password").value;
             var bd = document.getElementById("birth_date").value;
+            */
+
+            var email = document.getElementById("{{ user_form.email.id_for_label }}").value;
+            var pass1 = document.getElementById("{{ user_form.password.id_for_label }}").value;
+            var pass2 = document.getElementById("{{ userprofile_form.confirm_password.id_for_label }}").value;
+            var bd = document.getElementById("{{ userprofile_form.birthday.id_for_label }}").value;
 
             var m1 = validate_email(email);
             var m2 = validate_password(pass1);
