@@ -2,8 +2,12 @@ from django.http import Http404
 from django.shortcuts import render
 from User.models import UserProfile
 from Post.models import Post, Comment, Like
+from Movie.models import Movie
 from django.http import Http404
+from django.http import HttpResponseForbidden
 from django.http import HttpResponse
+from User.views import login_required
+from datetime import datetime
 
 
 def like(request, post_id, user_id):
@@ -80,3 +84,32 @@ def timeline(request):
     return render(request, "timeline.html", {
         # 'form': form
         })
+
+
+@login_required
+def postIt(request, movie_id, user_id, rate):
+    movie = Movie.objects.filter(id=movie_id)
+    if movie.__len__() > 0:
+        movie = movie[0]
+    else:
+        raise Http404("no such movie!")
+    user = UserProfile.objects.filter(id=user_id)
+    if user.__len__() > 0:
+        user = user[0]
+    else:
+        raise Http404("no such user!")
+    if user.id != request.user.id:
+        return HttpResponseForbidden('don\'t f around')
+    rate = int(rate)
+    if rate not in range(1,10):
+        raise Http404('rate number should be in 0.5 to 5 range')
+    rate /= 2
+    print('test')
+    print(rate)
+    print('out')
+    print('test')
+    text = request.GET['text']
+    if text is None:
+        test = ''
+    Post(author=user, movie=movie, rate=rate, text=text).save()
+    return HttpResponse("Success!")
