@@ -7,55 +7,82 @@ function search(){
 	xhr.onreadystatechange = function() {
 		if(xhr.readyState === 4) {
             if (xhr.status === 200) {
-                var movies = document.getElementById('movies')
-                var jsonObj = JSON.parse(xhr.responseText)
-                movies.innerHTML = ''
+                var movies = document.getElementById('movies');
+                var people = document.getElementById('people');
+                var jsonObj = JSON.parse(xhr.responseText);
+                movies.innerHTML = '';
+                people.innerHTML = '';
+                var year = new Date().getFullYear();
                 for(key in jsonObj){
-                    //debugger
-                    var movie = jsonObj[key]
+                    if(key.charAt([0]) === 't' ) {
+                        var movie = jsonObj[key]
+                        var firstDiv = document.createElement("div");
+                        firstDiv.className = "search_movie_result col-md-4";
+                        firstDiv.id = key;
+                        var img = document.createElement("img");
+                        //Console.log()
+                        img.src = static_url + "img/posters/" + movie.id + ".jpg";
+                        img.className = "col-md-6 search_movie_poster";
+                        var secondDiv = document.createElement("div");
+                        secondDiv.className = "col-md-6 search_movie_info";
+                        var h4 = document.createElement("h4");
+                        h4.innerHTML = movie.name;
+                        secondDiv.appendChild(h4);
+                        var rating = document.createElement("div");
+                        rating.className = "rating";
+                        var starSpans = [];
+                        for (var i = 0; i < 5; i++) {
+                            starSpans[i] = document.createElement("span");
+                            starSpans[i].className = "star";
+                            starSpans[i].setAttribute("hidden", "hidden");
+                            rating.appendChild(starSpans[i]);
+                        }
+                        var rateNumber = document.createElement("div");
+                        rateNumber.className = "rating_number full_rate";
+                        rateNumber.id = "r" + key.split('t')[1];
+                        rateNumber.innerHTML = movie.rating_count + " " + movie.rating_sum;
+                        rating.appendChild(rateNumber);
+                        //rate(rating);
+                        //stars
+                        //<span class="star star_full"></span><span class="star star_full"></span><span class="star star_full"></span><span class="star star_full"></span><span class="star star_half"></span>
+                        // <div class="rating_number full_rate">4.5/5</div>
 
-                    var firstDiv = document.createElement("div");
-                    firstDiv.className = "search_movie_result col-md-4";
-                    firstDiv.id = key;
-                    var img = document.createElement("img");
-                    //Console.log()
-                    img.src = static_url + "img/posters/" + movie.id + ".jpg";
-                    img.className = "col-md-6 search_movie_poster";
-                    var secondDiv = document.createElement("div");
-                    secondDiv.className = "col-md-6 search_movie_info";
-                    var h4 = document.createElement("h4");
-                    h4.innerHTML = movie.name;
-                    secondDiv.appendChild(h4);
-                    var rating = document.createElement("div");
-                    rating.className = "rating";
-                    var starSpans = [];
-                    for(var i = 0; i < 5; i++){
-                        starSpans[i] = document.createElement("span");
-                        starSpans[i].className = "star";
-                        starSpans[i].setAttribute("hidden", "hidden");
-                        rating.appendChild(starSpans[i]);
+                        secondDiv.appendChild(rating);
+                        var fourthDiv = document.createElement("div");
+                        fourthDiv.className = "search_movie_director"
+                        var director = document.createElement("strong");
+                        director.innerHTML = "Director:";
+                        fourthDiv.appendChild(director);
+                        fourthDiv.innerHTML += movie.director;
+                        secondDiv.appendChild(fourthDiv);
+                        firstDiv.appendChild(img);
+                        firstDiv.appendChild(secondDiv);
+                        movies.appendChild(firstDiv);
+                    }else{
+                        var user = jsonObj[key]
+                        var firstDiv = document.createElement('div');
+                        firstDiv.className="search_person_result col-md-2";
+                        var img = document.createElement('img');
+                        img.className = "circular thumbnail_pic shadow";
+                        img.setAttribute('src', src="../static/img/test/p2.jpg");
+                        firstDiv.appendChild(img);
+                        var secondDiv = document.createElement('div');
+                        secondDiv.className = "thumbnail_text_name";
+                        var a = document.createElement('a');
+                        a.setAttribute('href', '/user/' + user.id);
+                        a.innerHTML = user.alias;
+                        secondDiv.appendChild(a);
+                        firstDiv.appendChild(secondDiv);
+                        var thirdDiv = document.createElement('div');
+                        thirdDiv.className = "thumbnail_user_age";
+                        var strong = document.createElement('strong');
+                        strong.innerHTML = 'Age:';
+                        thirdDiv.appendChild(strong);
+                        thirdDiv.innerHTML += 'about ' + (year - parseInt(user.birthday.split('-')[0]));
+                        //console.log(String.split(user.birthday, 4))
+                        firstDiv.appendChild(thirdDiv);
+                        people.appendChild(firstDiv)
                     }
-                    var rateNumber = document.createElement("div");
-                    rateNumber.className = "rating_number full_rate";
-                    rateNumber.id = "r" + key.split('t')[1];
-                    rateNumber.innerHTML = movie.rating_count + " " + movie.rating_sum;
-                    rating.appendChild(rateNumber);
-                    //rate(rating);
-                    //stars
-                                //<span class="star star_full"></span><span class="star star_full"></span><span class="star star_full"></span><span class="star star_full"></span><span class="star star_half"></span>
-                                // <div class="rating_number full_rate">4.5/5</div>
-
-                    secondDiv.appendChild(rating);
-                    var fourthDiv = document.createElement("div");
-                    fourthDiv.className = "search_movie_director"
-                    var director = document.createElement("strong");
-                    director.innerHTML = "Director:";
-                    fourthDiv.appendChild(director);
-                    fourthDiv.innerHTML += movie.director;
-                    secondDiv.appendChild(fourthDiv);
-                    firstDiv.appendChild(img);
-                    firstDiv.appendChild(secondDiv);
-                    movies.appendChild(firstDiv);
                 }
             initialRate();
             }
