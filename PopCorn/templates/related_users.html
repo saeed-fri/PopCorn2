@@ -8,6 +8,14 @@
 {% block container %}
     <section id="main_content">
             <section class="col-md-9 tab-pane" id="people">
+                {% for user in users %}
+                    <div class="search_person_result col-md-2 shadow">
+                        <img class="circular thumbnail_pic shadow" src="../static/img/test/p2.jpg"/>
+                        <div class="thumbnail_text_name"><a href="#"> {{ user.user.username }} </a></div>
+                        <div class="thumbnail_user_age"><strong>Age: </strong>25</div>
+                    </div>
+                {% endfor %}
+                <!--
                 <div class="search_person_result col-md-2 shadow">
                     <img class="circular thumbnail_pic shadow" src="../static/img/test/p2.jpg"/>
                     <div class="thumbnail_text_name"><a href="#"> John Smith</a></div>
@@ -33,21 +41,7 @@
                     <div class="thumbnail_text_name"><a href="#"> John Smith</a></div>
                     <div class="thumbnail_user_age"><strong>Age: </strong>25</div>
                 </div>
-                <div class="search_person_result col-md-2 shadow">
-                    <img class="circular thumbnail_pic shadow" src="../static/img/test/p2.jpg"/>
-                    <div class="thumbnail_text_name"><a href="#"> John Smith</a></div>
-                    <div class="thumbnail_user_age"><strong>Age: </strong>25</div>
-                </div>
-                <div class="search_person_result col-md-2 shadow">
-                    <img class="circular thumbnail_pic shadow" src="../static/img/test/p2.jpg"/>
-                    <div class="thumbnail_text_name"><a href="#"> John Smith</a></div>
-                    <div class="thumbnail_user_age"><strong>Age: </strong>25</div>
-                </div>
-                <div class="search_person_result col-md-2 shadow">
-                    <img class="circular thumbnail_pic shadow" src="../static/img/test/p2.jpg"/>
-                    <div class="thumbnail_text_name"><a href="#"> John Smith</a></div>
-                    <div class="thumbnail_user_age"><strong>Age: </strong>25</div>
-                </div>
+                -->
         </section>
 
     </section>

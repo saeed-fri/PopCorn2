@@ -17,12 +17,17 @@
                     <div class="thumbnail_text_username">@JonDoe</div>
                 </div>
             </div>
-            <button class="btn btn-primary" id="follow_btn" onclick="follow(this)">{{ follow_button }}</button>
+            <!--<form method="post" action="/follow/{{ user_profile.user.username }}/">-->
+            <form role="form" method="post" action="">
+                {% csrf_token %}
+            	<input id="username" type="hidden" name="username" value="{{ user_profile.user.username }}" />
+                <button class="btn btn-primary" id="follow_btn">{{ follow_button }}</button>
+            </form>
 
             <div class="panel panel-default follow_box">
                 <div class="panel-body">
-                    <div>{{ followers }} followers</div>
-                    <div>follows {{ followees }} people</div>
+                    <div><a href="/followers/{{ user_profile.user.username }}/"> <span id="number_of_followers"> {{ followers }} </span> followers </a> </div>
+                    <div><a href="/followees/{{ user_profile.user.username }}/"> follows {{ followees }} people </a> </div>
                     <!--
                     <div>132 followers</div>
                     <div>Follows 130 people</div>
@@ -123,4 +128,29 @@
                 </article>
         </div>
     </section>
+
+    <script type="text/javascript">
+    var btn = document.querySelector("#follow_btn");
+    var username = document.querySelector("#username").value;
+    btn.addEventListener('click', function followState(event) {
+            event.preventDefault();
+            var xhr = new XMLHttpRequest();
+                var url = '/follow/' + username + '/';
+            xhr.open('get', url);
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4) {
+                    if (xhr.status === 200) {
+                        if (btn.innerHTML === "follow") {
+                            btn.innerHTML = "unfollow";
+                        } else {
+                            btn.innerHTML = "follow";
+                        }
+                    }
+                    document.querySelector("#number_of_followers").innerHTML = xhr.responseText;
+                }
+            };
+            xhr.send(null);
+        }
+    )
+    </script>
 {% endblock %}

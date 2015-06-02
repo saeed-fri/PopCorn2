@@ -17,8 +17,9 @@ class LoginForm(forms.ModelForm):
 class RegistrationForm(forms.Form):
     username = forms.CharField(max_length=30, required=True)
     alias = forms.CharField(max_length=50, required=True)
-    #password = forms.CharField(max_length=50, widget=forms.PasswordInput(), required=True)
+    #password = forms.CharField(min_length=6, max_length=50, widget=forms.PasswordInput(), required=True)
     password = Password(max_length=50, widget=forms.PasswordInput(), required=True)
+    #confirm_password = forms.CharField(min_length=6, max_length=50, widget=forms.PasswordInput(), required=True)
     confirm_password = Password(max_length=50, widget=forms.PasswordInput(), required=True)
     email = forms.EmailField(max_length=70, required=True)
     #birthday = MyDateField(required=True)
@@ -32,6 +33,14 @@ class RegistrationForm(forms.Form):
         else:
             s = date.split("/")
             return s[2]+'-'+s[1]+'-'+s[0]
+
+    def clean(self):
+        cleaned_data = super(RegistrationForm, self).clean()
+
+        pw1 = cleaned_data.get("password")
+        pw2 = cleaned_data.get("confirm_password")
+        if pw1 != pw2:
+            raise ValidationError("Your confirmation of password doesn't match", code="password_confirmation_error");
 
 
 class UserRegisterForm(forms.ModelForm):

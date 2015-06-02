@@ -1,11 +1,11 @@
 from django.shortcuts import render
 from django.core.mail import send_mail
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, HttpResponse
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from PopCorn.forms import *
-from User.models import UserProfile
+from User.models import UserProfile, Follow
 
 
 def register(request):
@@ -23,6 +23,7 @@ def register(request):
             userprofile.birthday = form.cleaned_data['birthday']
             userprofile.alias = form.cleaned_data['alias']
             userprofile.save()
+            user.userprofile = userprofile
             print("New user created.")
             return HttpResponseRedirect('/login/')
     else:
@@ -108,11 +109,11 @@ def forgot_password(request):
 
 
 @login_required(login_url='/login/')
-def profile(request, user_id):
+def profile(request, username):
     user = request.user
-    user_profile = UserProfile.objects.get(user=user)
-    profiling_user = User.objects.filter(id=user_id)[0]
-    profiling_user_profile = UserProfile.objects.get(user=profiling_user)
+    user_profile = user.userprofile
+    profiling_user = User.objects.filter(username=username)[0]
+    profiling_user_profile = profiling_user.userprofile
     if profiling_user:
         if profiling_user.username == user.username:
             if request.method == 'POST':
@@ -124,22 +125,65 @@ def profile(request, user_id):
 
             })
         else:
-            if user_profile.follows.filter(id=user_id):
+            if Follow.objects.filter(follower=user_profile.id, followee=profiling_user_profile.id):
                 button = 'unfollow'
             else:
                 button = 'follow'
-            followees = profiling_user_profile.follows.count()
-            #followers = UserProfile.objects.
-            followers = 0
+            followees = Follow.objects.filter(follower=profiling_user_profile.id).count()
+            followers = Follow.objects.filter(followee=profiling_user_profile.id).count()
             return render(request, "profile.html", {
                 'follow_button': button,
                 'followers': followers,
                 'followees': followees,
-                'profiling_user_profile': profiling_user_profile
+                'user_profile': profiling_user_profile
             })
     else:
         pass
 
+
+@login_required(login_url='/login/')
+def follow(request, username):
+    follower = request.user
+    follower_profile = follower.userprofile
+    followee = User.objects.get(username=username)
+    followee_profile = followee.userprofile
+    if Follow.objects.filter(follower=follower_profile, followee=followee_profile):
+        Follow.objects.filter(follower=follower_profile, followee=followee_profile).delete()
+    else:
+        following = Follow()
+        following.follower = follower_profile
+        following.followee = followee_profile
+        following.save()
+
+    number_of_followers = Follow.objects.filter(followee=followee_profile.id).count()
+    return HttpResponse(number_of_followers)
+    #return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+
+
+def show_followers(request, username):
+    user = User.objects.filter(username=username)[0]
+    user = user.userprofile
+    following_qs = Follow.objects.filter(followee=user)
+    followers = []
+    for f in following_qs:
+        print("hi there")
+        followers.append(f.follower)
+
+    return render(request, "related_users.html", {
+        'users': followers
+    })
+
+def show_followees(request, username):
+    user = User.objects.filter(username=username)[0]
+    user = user.userprofile
+    following_qs = Follow.objects.filter(follower=user)
+    followees = []
+    for f in following_qs:
+        followees.append(f.followee)
+
+    return render(request, "related_users.html", {
+        'users': followees
+    })
 
 def related_user(request):
     # form = Users(request.POST)
