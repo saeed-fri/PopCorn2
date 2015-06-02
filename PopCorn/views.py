@@ -83,4 +83,13 @@ def processQueryJson(query):
     for term in terms:
         movie_results += Movie.objects.filter(name__contains=term).values()
         movie_results += Movie.objects.filter(director__contains=term).values()
-    return movie_results
+    temp = []
+    for i in range(0,movie_results.__len__()):
+        flag = True
+        for j in range(i + 1,movie_results.__len__()):
+            if movie_results[i] == movie_results[j]:
+                flag = False
+                break
+        if flag:
+            temp.append(movie_results[i])
+    return temp
