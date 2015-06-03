@@ -6,6 +6,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from PopCorn.forms import *
 from User.models import UserProfile, Follow
+from Post.models import *
 
 
 def register(request):
@@ -21,6 +22,7 @@ def register(request):
             userprofile = UserProfile()
             userprofile.user = user
             userprofile.birthday = form.cleaned_data['birthday']
+            print(userprofile.birthday)
             userprofile.alias = form.cleaned_data['alias']
             userprofile.save()
             user.userprofile = userprofile
@@ -114,7 +116,12 @@ def profile(request, username):
     user_profile = user.userprofile
     profiling_user = User.objects.filter(username=username)[0]
     profiling_user_profile = profiling_user.userprofile
+
+    #posts = Post.objects.filter(auther=profiling_user_profile)
+
     if profiling_user:
+        followees = Follow.objects.filter(follower=profiling_user_profile.id).count()
+        followers = Follow.objects.filter(followee=profiling_user_profile.id).count()
         if profiling_user.username == user.username:
             if request.method == 'POST':
                 pass
@@ -122,15 +129,14 @@ def profile(request, username):
                 update_form = ProfileUpdateForm
 
             return render(request, "profile_user.html", {
-
+                'followers': followers,
+                'followees': followees,
             })
         else:
             if Follow.objects.filter(follower=user_profile.id, followee=profiling_user_profile.id):
                 button = 'unfollow'
             else:
                 button = 'follow'
-            followees = Follow.objects.filter(follower=profiling_user_profile.id).count()
-            followers = Follow.objects.filter(followee=profiling_user_profile.id).count()
             return render(request, "profile.html", {
                 'follow_button': button,
                 'followers': followers,

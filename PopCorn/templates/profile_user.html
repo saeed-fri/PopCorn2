@@ -19,11 +19,10 @@
             </div>
             <button class="btn btn-info" id="follow_btn" onclick="edit(this)">edit</button>
 
-            <div class="panel panel-default" id="follow_box">
+            <div class="panel panel-default follow_box">
                 <div class="panel-body">
-                    <div>132 followers</div>
-                    <div>Follows 130 people</div>
-                    <div>Lives in Tehran, Iran</div>
+                    <div><a href="/followers/{{ user_profile.user.username }}/"> You have <span id="number_of_followers"> {{ followers }} </span> followers </a> </div>
+                    <div><a href="/followees/{{ user_profile.user.username }}/"> You follow {{ followees }} people </a> </div>
                 </div>
             </div>
 
